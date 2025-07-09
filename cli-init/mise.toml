@@ -1,0 +1,7 @@
+[tools]
+cargo-binstall = "1.14.1"
+rust = "1.88.0"
+uv = "latest"
+
+[task_config]
+includes = ["tasks.toml", "xtasks"]

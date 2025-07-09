@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "crates/my-app/",
+    },
+    {
+      "name": "root",
+      "path": ".",
+    },
+  ],
+  "settings": { }
+}

@@ -1,0 +1,24 @@
+[package]
+name = "cdkam_ansible"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.86"
+
+[dependencies]
+anyhow = "1.0.95"
+serde = "1.0.217"
+serde_json = "1.0.138"
+
+[dependencies.cdk-ansible]
+workspace = true
+
+[dependencies.indexmap]
+version = "2.7.1"
+features = ["serde"]
+
+[features]
+ansible = ["ansible-builtin"]
+ansible-builtin = ["ansible-builtin-command", "ansible-builtin-debug", "ansible-builtin-shell"]
+ansible-builtin-debug = []
+ansible-builtin-command = []
+ansible-builtin-shell = []

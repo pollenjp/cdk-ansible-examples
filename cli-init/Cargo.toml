@@ -1,0 +1,22 @@
+[workspace]
+members = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.88"
+description = "cdk-ansible's cli init example"
+homepage = "https://github.com/pollenjp/cdk-ansible-examples"
+repository = "https://github.com/pollenjp/cdk-ansible-examples"
+authors = ["pollenjp <polleninjp@gmail.com>"]
+license = "MIT"
+keywords = ["ansible", "cdk", "cdk-ansible"]
+
+[workspace.dependencies]
+cdkam_ansible = { path = "crates/cdkam_ansible" }
+cdk-ansible = { git = "https://github.com/pollenjp/cdk-ansible.git", rev = "595f8a2257f814a314c26764760b6afaa9cc235c" }
+
+anyhow = { version = "1.0.95" }
+indexmap = { version = "2.7.1", features = ["serde"] }
+serde = { version = "1.0.217", features = ["derive"] }
+serde_json = { version = "1.0.138", features = ["preserve_order"] }

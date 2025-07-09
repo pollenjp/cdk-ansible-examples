@@ -1,0 +1,7 @@
+[project]
+name = "cli-init"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["ansible>=11.7.0"]
