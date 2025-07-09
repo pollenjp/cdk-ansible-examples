@@ -4,7 +4,7 @@ mod stacks;
 use stacks::*;
 
 use ::anyhow::Result;
-use ::cdk_ansible::DeployApp;
+use ::cdk_ansible::App;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -24,7 +24,7 @@ pub fn run() -> Result<()> {
         }),
     };
 
-    let mut app = DeployApp::new(std::env::args().collect());
+    let mut app = App::new(std::env::args().collect());
     app.add_inventory(host_pool.to_inventory()?)?;
     app.add_stack(Box::new(SampleStack::new(&host_pool)))?;
     app.run()

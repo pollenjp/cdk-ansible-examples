@@ -14,7 +14,7 @@ keywords = ["ansible", "cdk", "cdk-ansible"]
 
 [workspace.dependencies]
 cdkam_ansible = { path = "crates/cdkam_ansible" }
-cdk-ansible = { git = "https://github.com/pollenjp/cdk-ansible.git", rev = "4799215c71ae4dbd75314d6a02a08b180b19b660" }
+cdk-ansible = { git = "https://github.com/pollenjp/cdk-ansible.git", rev = "8d1430b76ef2f4186c5d262dd8ec30e71c36cb27" }
 
 anyhow = { version = "1.0.95" }
 indexmap = { version = "2.7.1", features = ["serde"] }

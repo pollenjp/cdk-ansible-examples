@@ -1,6 +1,6 @@
 use crate::inventory::HostPool;
 use ::cdk_ansible::{
-    DeployStack, ExeParallel, ExePlay, ExeSequential, ExeSingle, OptU, Play, PlayOptions,
+    ExeParallel, ExePlay, ExeSequential, ExeSingle, OptU, Play, PlayOptions, Stack,
     StringOrVecString, TaskOptions,
 };
 
@@ -34,7 +34,7 @@ impl SampleStack {
     }
 }
 
-impl DeployStack for SampleStack {
+impl Stack for SampleStack {
     /// TODO: May be converted to derive macro in the future
     #[expect(clippy::expect_used, reason = "Logical failure")]
     fn name(&self) -> &str {

@@ -29,4 +29,4 @@ playbook_command_str=$(
     run --directory "${cli_init_root}" \
     ansible-playbook -v
 )
-cargo run --package my-app -- deploy -P 3 --playbook-command "${playbook_command_str}" -i dev
+cargo run --package my-app -- deploy -P 3 --playbook-command "${playbook_command_str}" -i dev SampleStack
