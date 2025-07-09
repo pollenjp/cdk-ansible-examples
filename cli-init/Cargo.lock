@@ -128,7 +128,7 @@ dependencies = [
 [[package]]
 name = "cdk-ansible"
 version = "0.1.5"
-source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=595f8a2257f814a314c26764760b6afaa9cc235c#595f8a2257f814a314c26764760b6afaa9cc235c"
+source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=4799215c71ae4dbd75314d6a02a08b180b19b660#4799215c71ae4dbd75314d6a02a08b180b19b660"
 dependencies = [
  "anyhow",
  "cargo_toml",
@@ -154,7 +154,7 @@ dependencies = [
 [[package]]
 name = "cdk-ansible-core"
 version = "0.0.13"
-source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=595f8a2257f814a314c26764760b6afaa9cc235c#595f8a2257f814a314c26764760b6afaa9cc235c"
+source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=4799215c71ae4dbd75314d6a02a08b180b19b660#4799215c71ae4dbd75314d6a02a08b180b19b660"
 dependencies = [
  "dyn-clone",
  "erased-serde",
@@ -166,7 +166,7 @@ dependencies = [
 [[package]]
 name = "cdk-ansible-macro"
 version = "0.0.4"
-source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=595f8a2257f814a314c26764760b6afaa9cc235c#595f8a2257f814a314c26764760b6afaa9cc235c"
+source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=4799215c71ae4dbd75314d6a02a08b180b19b660#4799215c71ae4dbd75314d6a02a08b180b19b660"
 dependencies = [
  "quote",
  "syn",

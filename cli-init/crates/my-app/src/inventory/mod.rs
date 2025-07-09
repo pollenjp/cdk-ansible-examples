@@ -1,9 +1,8 @@
-use anyhow::{Result, bail};
+use anyhow::Result;
 use cdk_ansible::{
-    AllInventoryVarsGen, FieldCount, HostInventoryVars, HostInventoryVarsGenerator, Inventory,
-    InventoryChild, InventoryRoot, OptU,
+    AllInventoryVarsGen, HostInventoryVars, HostInventoryVarsGenerator, Inventory, InventoryChild,
+    InventoryRoot, OptU,
 };
-use indexmap::IndexMap;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -19,9 +18,8 @@ pub struct HostPool {
 
 impl HostPool {
     pub fn to_inventory(&self) -> Result<Inventory> {
-        use ::cdk_ansible::InventoryHosts;
         Ok(Inventory {
-            name: "inventory".into(), // generate 'inventory.yaml' file
+            name: "dev".into(), // generate 'dev.yaml' file
             root: InventoryRoot {
                 all: InventoryChild {
                     hosts: OptU::Some(self.inventory_vars()?.into_iter().collect()),

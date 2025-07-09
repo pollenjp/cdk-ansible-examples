@@ -4,11 +4,7 @@ mod stacks;
 use stacks::*;
 
 use ::anyhow::Result;
-use ::cdk_ansible::{
-    AllInventoryVarsGen, DeployApp, DeployStack, ExeParallel, ExePlay, ExeSequential, ExeSingle,
-    HostInventoryVars, HostInventoryVarsGenerator, Inventory, InventoryChild, InventoryRoot, OptU,
-    Play, PlayOptions, StringOrVecString, TaskOptions,
-};
+use ::cdk_ansible::DeployApp;
 use std::cell::RefCell;
 use std::rc::Rc;
 
