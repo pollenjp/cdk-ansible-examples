@@ -127,8 +127,9 @@ dependencies = [
 
 [[package]]
 name = "cdk-ansible"
-version = "0.1.5"
-source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=8d1430b76ef2f4186c5d262dd8ec30e71c36cb27#8d1430b76ef2f4186c5d262dd8ec30e71c36cb27"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0a59f5f4823c7b662dcb429be00a7eda33277190845a3bc3d199d6cfc1d4440c"
 dependencies = [
  "anyhow",
  "cargo_toml",
@@ -153,8 +154,9 @@ dependencies = [
 
 [[package]]
 name = "cdk-ansible-core"
-version = "0.0.13"
-source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=8d1430b76ef2f4186c5d262dd8ec30e71c36cb27#8d1430b76ef2f4186c5d262dd8ec30e71c36cb27"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "360d636b306ec06cf0ea1f897f400e5394869910beafa8fcf90dac164bd61b10"
 dependencies = [
  "dyn-clone",
  "erased-serde",
@@ -165,8 +167,9 @@ dependencies = [
 
 [[package]]
 name = "cdk-ansible-macro"
-version = "0.0.4"
-source = "git+https://github.com/pollenjp/cdk-ansible.git?rev=8d1430b76ef2f4186c5d262dd8ec30e71c36cb27#8d1430b76ef2f4186c5d262dd8ec30e71c36cb27"
+version = "0.0.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "71525d25d4bb556f6c6eedb32370e0a97922ba357f5d224ae0912980ac682f27"
 dependencies = [
  "quote",
  "syn",

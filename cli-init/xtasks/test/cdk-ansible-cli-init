@@ -17,9 +17,17 @@ module_regex=$(
 )
 
 pushd "$cdk_ansible_repo_root"
+# Run with released cdk-ansible-cli
+#
 uv --project "$cli_init_root" run \
-  cargo run --package cdk-ansible-cli -- \
-  module --pkg-prefix 'cdkam' --output-dir "${cli_init_root}/crates" --module-name-regex "${module_regex}"
+  cdk-ansible module --pkg-prefix 'cdkam' --output-dir "${cli_init_root}/crates" --module-name-regex "${module_regex}"
+
+# Run on local repository
+#
+# uv --project "$cli_init_root" run \
+#   cargo run --package cdk-ansible-cli -- \
+#   module --pkg-prefix 'cdkam' --output-dir "${cli_init_root}/crates" --module-name-regex "${module_regex}"
+
 popd
 
 stringify_cmd=(uv run python -c 'import sys; from shlex import join; print(join(sys.argv[1:]))')
