@@ -1,7 +1,7 @@
 use crate::inventory::HostPool;
 use ::cdk_ansible::{
     ExeParallel, ExePlay, ExeSequential, ExeSingle, OptU, Play, PlayOptions, Stack,
-    StringOrVecString, TaskOptions,
+    StringOrVecString, Task, TaskOptions,
 };
 
 pub struct SampleStack {
@@ -28,6 +28,26 @@ impl SampleStack {
                         ExeSingle(create_play_helper("sample5", hosts.into(), 1)),
                     ]),
                     ExeSingle(create_play_helper("sample6", hosts.into(), 1)),
+                    ExeSingle(
+                        // cdkam test
+                        Box::new(Play {
+                            name: "sample7".into(),
+                            hosts: hosts.into(),
+                            options: PlayOptions::default(),
+                            tasks: vec![Task {
+                                name: "Debug".into(),
+                                options: TaskOptions::default(),
+                                command: Box::new(::cdkam::ansible::builtin::debug::Module {
+                                    module: ::cdkam::ansible::builtin::debug::Args {
+                                        options: ::cdkam::ansible::builtin::debug::Opt {
+                                            msg: OptU::Some("Hello, world!".into()),
+                                            ..Default::default()
+                                        },
+                                    },
+                                }),
+                            }],
+                        }),
+                    ),
                 ]),
             ]),
         }

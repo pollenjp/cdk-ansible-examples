@@ -176,6 +176,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "cdkam"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "147493b59d3f0eb7c3a78fee378cf68d3e7e322ec6245412ad8ac4506590180a"
+dependencies = [
+ "anyhow",
+ "cdk-ansible",
+ "indexmap",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "cdkam_ansible"
 version = "0.1.0"
 dependencies = [
@@ -502,6 +515,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "cdk-ansible",
+ "cdkam",
  "cdkam_ansible",
  "indexmap",
  "serde",

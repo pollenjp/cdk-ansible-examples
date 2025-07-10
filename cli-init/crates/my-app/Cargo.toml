@@ -13,6 +13,7 @@ keywords.workspace = true
 [dependencies]
 cdkam_ansible = { workspace = true, features = ["ansible-builtin"] }
 cdk-ansible.workspace = true
+cdkam = { workspace = true, features = ["ansible"] }
 
 anyhow.workspace = true
 indexmap.workspace = true

@@ -16,6 +16,7 @@ keywords = ["ansible", "cdk", "cdk-ansible"]
 cdkam_ansible = { path = "crates/cdkam_ansible" }
 
 cdk-ansible = { version = "0.2.0" }
+cdkam = { version = "0.3.0" }
 
 anyhow = { version = "1.0.95" }
 indexmap = { version = "2.7.1", features = ["serde"] }
