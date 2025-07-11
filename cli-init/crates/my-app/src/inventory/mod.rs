@@ -38,7 +38,13 @@ impl HostInventoryVarsGenerator for LocalHost {
     fn gen_host_vars(&self) -> Result<HostInventoryVars> {
         Ok(HostInventoryVars {
             ansible_host: self.name.clone(),
-            inventory_vars: vec![],
+            inventory_vars: vec![
+                ("ansible_connection".into(), "local".into()),
+                (
+                    "ansible_python_interpreter".into(),
+                    "/usr/bin/python3".into(),
+                ),
+            ],
         })
     }
 }

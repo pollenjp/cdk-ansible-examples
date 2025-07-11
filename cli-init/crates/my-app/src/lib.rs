@@ -1,7 +1,7 @@
 mod inventory;
 use inventory::*;
-mod stacks;
-use stacks::*;
+mod stack;
+use stack::*;
 
 use ::anyhow::Result;
 use ::cdk_ansible::App;
