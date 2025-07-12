@@ -14,8 +14,6 @@ impl SampleStack {
 
         Self {
             exe_play: ExeSequential(vec![
-                // ExeSingle(create_play_helper("sample1", hosts.into())),
-                // ExeSingle(create_play_helper("sample2", hosts.into())),
                 ExeParallel(vec![
                     ExeParallel(vec![
                         ExeSingle(create_play_helper("sample0", hosts.into(), 5)),
@@ -49,6 +47,8 @@ impl SampleStack {
                         }),
                     ),
                 ]),
+                ExeSingle(create_play_helper("sample8", hosts.into(), 1)),
+                ExeSingle(create_play_helper("sample9", hosts.into(), 1)),
             ]),
         }
     }

@@ -15,6 +15,7 @@ module_regex=$(
   IFS='|'
   echo "${module_names[*]}"
 )
+module_regex="(${module_regex})"
 
 pushd "$cdk_ansible_repo_root"
 # Run with released cdk-ansible-cli
