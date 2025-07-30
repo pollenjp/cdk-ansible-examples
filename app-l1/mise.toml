@@ -1,0 +1,30 @@
+[tools]
+cargo-binstall = "1.14.2"
+"cargo:cdk-ansible-cli" = "0.2.3"
+rust = "1.88.0"
+uv = "0.8.3"
+yq = "4.47.1"
+
+[tasks.fmt]
+run = [
+    'rustup component add rustfmt',
+    'cargo fix --allow-dirty --all-targets',
+    'cargo fmt --all',
+]
+
+[tasks.run]
+env = { RUST_BACKTRACE = "1" }
+run = '''
+#!/usr/bin/env bash
+set -euo pipefail
+
+stringify_cmd=(uv run python -c 'import sys; from shlex import join; print(join(sys.argv[1:]))')
+playbook_command_str=$(
+  "${stringify_cmd[@]}" \
+    uv --project . \
+    run --directory . \
+    ansible-playbook -v
+)
+
+cargo run -p my-app -- deploy --playbook-command "${playbook_command_str}" -i dev SampleStack
+'''

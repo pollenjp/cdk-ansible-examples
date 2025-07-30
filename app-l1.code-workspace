@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": "app-l1/crates/my-app"
+    },
+    {
+      "name": "root",
+      "path": "app-l1/"
+    },
+    {
+      "name": "repo-root",
+      "path": "."
+    }
+  ],
+  "settings": { }
+}

@@ -1,0 +1,17 @@
+[workspace]
+members = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.85"
+description = "cdk-ansible-examples"
+homepage = "https://github.com/pollenjp/cdk-ansible-examples"
+repository = "https://github.com/pollenjp/cdk-ansible-examples"
+authors = ["pollenjp <polleninjp@gmail.com>"]
+license = "MIT"
+
+[workspace.dependencies]
+anyhow = "1.0"
+cdk-ansible = "0.2"
+cdkam = "0.3"
