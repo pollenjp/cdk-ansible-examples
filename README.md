@@ -5,7 +5,7 @@ This repository offers [cdk-ansible](https://github.com/pollenjp/cdk-ansible) ex
 You can generate a new project with [cargo-generate](https://github.com/cargo-generate/cargo-generate).
 
 ```sh
-cargo generate gh:pollenjp/cdk-ansible-examples --branch feature/app-l2
+cargo generate gh:pollenjp/cdk-ansible-examples
 ```
 
 You can select from the available templates in this output.
@@ -16,3 +16,5 @@ You can select from the available templates in this output.
 ❯ app-l2
   app-l1
 ```
+
+**app-l2** template is recommended.

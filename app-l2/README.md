@@ -1,9 +1,9 @@
 # app-l2
 
 ```sh
-cargo generate gh:pollenjp/cdk-ansible-examples app-l1
+cargo generate gh:pollenjp/cdk-ansible-examples app-l2
 ```
 
 ```sh
-mr run
+mise run run
 ```
