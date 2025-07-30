@@ -13,7 +13,6 @@ pub struct SampleStack {
 impl SampleStack {
     pub fn new() -> Self {
         Self {
-            // exe_play: ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample"))),
             exe_play: ExePlayL2::Sequential(vec![
                 ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample1"))),
                 ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample2"))),
