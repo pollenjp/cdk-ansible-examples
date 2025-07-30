@@ -1,2 +1,5 @@
 [template]
-sub_templates = ["app-1"]
+sub_templates = [
+    "app-l2", # Default
+    "app-l1",
+]

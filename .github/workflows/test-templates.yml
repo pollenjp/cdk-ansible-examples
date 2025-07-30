@@ -1,0 +1,27 @@
+name: test
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  test-run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template:
+          - app-l1
+          - app-l2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2.4.4
+        with:
+          version: 2025.7.31
+          install: true # [default: true] run `mise install`
+          cache: true # [default: true] cache mise using GitHub's cache
+          log_level: debug # [default: info] log level
+          working_directory: ${{ matrix.template }}
+      - run: mise run run
+        working-directory: ${{ matrix.template }}
