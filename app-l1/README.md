@@ -1,5 +1,9 @@
 # app-l1
 
 ```sh
-cargo generate --git https://github.com/pollenjp/cdk-ansible-examples.git app-l1
+cargo generate gh:pollenjp/cdk-ansible-examples app-l1
+```
+
+```sh
+mr run
 ```
