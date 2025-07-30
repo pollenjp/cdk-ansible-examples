@@ -1,0 +1,22 @@
+[package]
+name = "my-app"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+description.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+# cdkam_ansible = { path = "../cdkam_ansible", features = [
+#     "ansible-builtin",
+# ] }
+
+anyhow.workspace = true
+cdk-ansible.workspace = true
+cdkam.workspace = true
+chrono.workspace = true
+futures.workspace = true
+
+[lints]
+workspace = true
