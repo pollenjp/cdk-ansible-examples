@@ -127,6 +127,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "cdk-ansible"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "494c5afe9b0915ff581769ee9ebfc34d05b8ba649a7df90ea74df14f39265f71"
+dependencies = [
+ "anyhow",
+ "cdk-ansible-core",
+ "cdk-ansible-macro",
+ "clap",
+ "convert_case",
+ "futures",
+ "indexmap",
+ "serde",
+ "serde_json",
+ "shlex",
+ "tempfile",
+ "tokio",
+]
+
+[[package]]
 name = "cdk-ansible-core"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -156,7 +176,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "147493b59d3f0eb7c3a78fee378cf68d3e7e322ec6245412ad8ac4506590180a"
 dependencies = [
  "anyhow",
- "cdk-ansible",
+ "cdk-ansible 0.2.7",
  "indexmap",
  "serde",
  "serde_json",
@@ -468,7 +488,7 @@ name = "my-app"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "cdk-ansible",
+ "cdk-ansible 0.3.0",
  "cdkam",
 ]
 
