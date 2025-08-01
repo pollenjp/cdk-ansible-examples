@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+env:
+  CI_JOB: 1
 jobs:
   test-run:
     runs-on: ubuntu-latest

@@ -13,7 +13,7 @@ license = "MIT"
 
 [workspace.dependencies]
 anyhow = "1.0"
-cdk-ansible = "0.2"
+cdk-ansible = "0.3"
 cdkam = "0.3"
 chrono = "0.4"
 futures = "0.3"

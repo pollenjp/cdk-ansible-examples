@@ -1,25 +1,22 @@
 use crate::inventory::{Host, HostPool, VAR_NAME_INSTANTIATED_AT};
 use anyhow::Result;
 use cdk_ansible::{
-    ExePlayL2, HostsL2, LazyPlayL2, OptU, PlayL2, PlayOptions, StackL2, Task, TaskOptions,
+    AppL2, ExePlayL2, HostInventoryVars, HostInventoryVarsGenerator, HostsL2, LEP, LazyPlayL2,
+    OptU, PlayL2, PlayOptions, StackL2, Task, TaskOptions, prelude::*,
 };
 use futures::future::{BoxFuture, FutureExt as _};
 use std::sync::Arc;
 
 pub struct SampleStack {
-    exe_play: ExePlayL2,
+    exe_play: LEP,
 }
 
 impl SampleStack {
     pub fn new() -> Self {
         Self {
-            exe_play: ExePlayL2::Sequential(vec![
-                ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample1"))),
-                ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample2"))),
-                ExePlayL2::Parallel(vec![
-                    ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample3"))),
-                    ExePlayL2::Single(Arc::new(SampleLazyPlayL2Helper::new("sample4"))),
-                ]),
+            exe_play: LEP::Sequential(vec![
+                LEP::Single(Arc::new(Sample1LazyPlayL2Helper::new("sample1"))),
+                LEP::Single(Arc::new(Sample2LazyPlayL2Helper::new("sample2"))),
             ]),
         }
     }
@@ -32,16 +29,16 @@ impl StackL2 for SampleStack {
             .last()
             .expect("Failed to get a stack name")
     }
-    fn exe_play(&self) -> &ExePlayL2 {
+    fn exe_play(&self) -> &LEP {
         &self.exe_play
     }
 }
 
-struct SampleLazyPlayL2Helper {
+struct Sample1LazyPlayL2Helper {
     name: String,
 }
 
-impl SampleLazyPlayL2Helper {
+impl Sample1LazyPlayL2Helper {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
@@ -49,17 +46,85 @@ impl SampleLazyPlayL2Helper {
     }
 }
 
-impl LazyPlayL2 for SampleLazyPlayL2Helper {
-    fn create_play_l2(&self) -> BoxFuture<'static, Result<PlayL2>> {
+impl LazyPlayL2 for Sample1LazyPlayL2Helper {
+    fn lazy_play_l2(&self) -> BoxFuture<'static, Result<ExePlayL2>> {
         let name = self.name.clone();
         async move {
             let hp = HostPool::new(); // Each hosts are instantiated here!!
-            Ok(PlayL2 {
-                name,
-                hosts: HostsL2::new(vec![Arc::clone(&hp.localhost) as _]),
-                options: PlayOptions::default(),
-                tasks: create_tasks_helper(Arc::clone(&hp.localhost) as _, 2)?,
-            })
+            Ok(vec![
+                PlayL2 {
+                    name: name.clone(),
+                    hosts: HostsL2::new(vec![Arc::clone(&hp.localhost) as _]),
+                    options: PlayOptions::default(),
+                    tasks: create_tasks_helper(Arc::clone(&hp.localhost) as _, 2)?,
+                }
+                .into(),
+                ExePlayL2::Sequential(vec![
+                    PlayL2 {
+                        name: name.clone(),
+                        hosts: HostsL2::new(vec![Arc::clone(&hp.host_a) as _]),
+                        options: PlayOptions::default(),
+                        tasks: create_tasks_helper(Arc::clone(&hp.host_a) as _, 2)?,
+                    }
+                    .into(),
+                    PlayL2 {
+                        name: name.clone(),
+                        hosts: HostsL2::new(vec![Arc::clone(&hp.host_a) as _]),
+                        options: PlayOptions::default(),
+                        tasks: create_tasks_helper(Arc::clone(&hp.host_a) as _, 2)?,
+                    }
+                    .into(),
+                ]),
+            ]
+            .into_exe_play_l2_parallel())
+        }
+        .boxed()
+    }
+}
+
+struct Sample2LazyPlayL2Helper {
+    name: String,
+}
+
+impl Sample2LazyPlayL2Helper {
+    pub fn new(name: &str) -> Self {
+        Self {
+            name: name.to_string(),
+        }
+    }
+}
+
+impl LazyPlayL2 for Sample2LazyPlayL2Helper {
+    fn lazy_play_l2(&self) -> BoxFuture<'static, Result<ExePlayL2>> {
+        let name = self.name.clone();
+        async move {
+            let hp = HostPool::new(); // Each hosts are instantiated here!!
+            Ok(vec![
+                PlayL2 {
+                    name: name.clone(),
+                    hosts: HostsL2::new(vec![Arc::clone(&hp.localhost) as _]),
+                    options: PlayOptions::default(),
+                    tasks: create_tasks_helper(Arc::clone(&hp.localhost) as _, 2)?,
+                }
+                .into(),
+                ExePlayL2::Sequential(vec![
+                    PlayL2 {
+                        name: name.clone(),
+                        hosts: HostsL2::new(vec![Arc::clone(&hp.host_a) as _]),
+                        options: PlayOptions::default(),
+                        tasks: create_tasks_helper(Arc::clone(&hp.host_a) as _, 2)?,
+                    }
+                    .into(),
+                    PlayL2 {
+                        name: name.clone(),
+                        hosts: HostsL2::new(vec![Arc::clone(&hp.host_a) as _]),
+                        options: PlayOptions::default(),
+                        tasks: create_tasks_helper(Arc::clone(&hp.host_a) as _, 2)?,
+                    }
+                    .into(),
+                ]),
+            ]
+            .into_exe_play_l2_parallel())
         }
         .boxed()
     }
