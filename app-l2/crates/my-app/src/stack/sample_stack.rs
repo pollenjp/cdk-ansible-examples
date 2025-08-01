@@ -1,8 +1,8 @@
 use crate::inventory::{Host, HostPool, VAR_NAME_INSTANTIATED_AT};
 use anyhow::Result;
 use cdk_ansible::{
-    AppL2, ExePlayL2, HostInventoryVars, HostInventoryVarsGenerator, HostsL2, LEP, LazyPlayL2,
-    OptU, PlayL2, PlayOptions, StackL2, Task, TaskOptions, prelude::*,
+    ExePlayL2, HostsL2, LEP, LazyPlayL2, OptU, PlayL2, PlayOptions, StackL2, Task, TaskOptions,
+    prelude::*,
 };
 use futures::future::{BoxFuture, FutureExt as _};
 use std::sync::Arc;
