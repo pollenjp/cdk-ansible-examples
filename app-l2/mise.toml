@@ -3,7 +3,7 @@ cargo-binstall = "1.14.2"
 "cargo:cdk-ansible-cli" = "0.2.3"
 rust = "1.88.0"
 uv = "0.8.3"
-yq = "4.47.1"
+yq = "4.53.6"
 
 [tasks.fmt]
 run = [
